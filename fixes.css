@@ -20,6 +20,63 @@
   width: min(26rem, 35vw);
 }
 
+/* Hero Action Chips: show both RESUME and OPEN FOR IDEAS on all viewports */
+.contact-chip {
+  display: flex !important;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.resume-chip {
+  position: absolute;
+  bottom: 1rem;
+  right: calc(1rem + 11.2rem);
+  z-index: 13;
+  color: var(--ink, #101211);
+  background: var(--paper, #efede7);
+  font: 700 0.52rem/1 var(--mono, monospace);
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.resume-chip b {
+  font-size: 0.95rem;
+  color: var(--red, #e54d2e);
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.resume-chip:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
+}
+
+.resume-chip:hover b {
+  transform: translateY(2px);
+}
+
+@media (max-width: 38rem) {
+  .contact-chip {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .resume-chip {
+    bottom: calc(1rem + 2.75rem);
+    right: 1rem;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.46rem;
+  }
+}
+
 /* ----------------------------------------------------------
    2. ABOUT SECTION
       Fix: Skills/Experience text cut off by photo-story,
