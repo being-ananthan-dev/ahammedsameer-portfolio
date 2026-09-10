@@ -64,7 +64,87 @@
   transform: translateY(2px);
 }
 
+/* Global Floating Action: RESUME BUTTON (Always visible at top-right on all pages) */
+.floating-resume-btn {
+  position: fixed;
+  top: clamp(0.75rem, 1.4vw, 1.25rem);
+  right: clamp(1rem, 2vw, 2.25rem);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #ffffff !important;
+  color: #101211 !important;
+  border: 1px solid rgba(16, 18, 17, 0.22) !important;
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem;
+  font: 700 0.58rem/1 var(--mono, monospace);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.18), 0 0.05rem 0.2rem rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.floating-resume-btn b {
+  color: var(--red, #e54d2e);
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 900;
+  transition: transform 0.2s ease;
+}
+
+.floating-resume-btn:hover {
+  transform: translateY(-2px);
+  background: #ffffff !important;
+  box-shadow: 0 0.45rem 1.4rem rgba(0, 0, 0, 0.28);
+}
+
+.floating-resume-btn:hover b {
+  transform: translateY(2px);
+}
+
+/* About Section Tag Chip: RESUME */
+.about-resume-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #101211;
+  color: #efede7;
+  padding: 0.32rem 0.65rem;
+  font: 700 0.52rem/1 var(--mono, monospace);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 0.2rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+.about-resume-chip b {
+  color: var(--red, #e54d2e);
+  font-size: 0.82rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.about-resume-chip:hover {
+  background: #282a29;
+  transform: translateY(-1px);
+}
+
+.about-resume-chip:hover b {
+  transform: translateY(1px);
+}
+
 @media (max-width: 38rem) {
+  .floating-resume-btn {
+    top: 0.65rem;
+    right: 0.85rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.5rem;
+  }
   .contact-chip {
     bottom: 1rem;
     right: 1rem;
@@ -162,15 +242,133 @@
   padding-bottom: 0.25rem;
 }
 
-/* Photo story: give it a clear top separation */
-.photo-story {
-  padding-top: clamp(2rem, 4vh, 3.5rem);
-  padding-bottom: clamp(3rem, 6vh, 5rem);
+/* ----------------------------------------------------------
+   ABOUT SECTION: POLAROID STORY FRAMES
+   - 3 frames transformed into medium-size squares
+   - Upper frame positioned in the empty space below intro copy
+   - Lower duo frames centered and balanced below
+   ---------------------------------------------------------- */
+
+/* Story frames: authentic medium-size square polaroid */
+.story-frame {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  width: clamp(13rem, 16vw, 17.5rem) !important;
+  min-height: 0 !important;
+  padding: 0.65rem 0.65rem 2.45rem 0.65rem !important;
+  background: var(--paper-light, #fdfcfa) !important;
+  box-shadow: 0 0.8rem 1.8rem rgba(50, 41, 31, 0.2), 0 0.15rem 0.4rem rgba(50, 41, 31, 0.08) !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: rotate(var(--frame-rotation, 0deg));
+  transform-origin: 50% 110%;
+  transition: transform 0.55s var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 0.55s ease;
+  margin: 0 !important;
 }
 
-/* Story frames: ensure they have consistent height */
-.story-frame {
-  min-height: 0;
+/* Inside polaroid: square 1:1 image */
+.story-frame img {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+  filter: saturate(0.92) contrast(1.04);
+  transition: filter 0.55s ease, transform 0.7s var(--ease-premium, ease);
+}
+
+/* Figcaption with handwritten note */
+.story-frame figcaption {
+  font-size: clamp(0.85rem, 0.95vw, 1.15rem) !important;
+  line-height: 1.2 !important;
+  position: absolute !important;
+  bottom: 0.55rem !important;
+  left: 0 !important;
+  right: 0 !important;
+  text-align: center !important;
+  opacity: 1 !important;
+  color: #151515 !important;
+  font-family: var(--hand, cursive) !important;
+}
+
+/* Polaroid interactive hover */
+.story-frame:hover,
+.story-frame:focus-within {
+  z-index: 10 !important;
+  transform: rotate(0deg) translateY(-0.75rem) scale(1.03) !important;
+  box-shadow: 0 1.2rem 2.4rem rgba(50, 41, 31, 0.32) !important;
+}
+
+.story-frame:hover img {
+  filter: saturate(1.02) contrast(1.06);
+  transform: scale(1.025);
+}
+
+/* Tape on top of each polaroid */
+.story-frame::before {
+  content: "" !important;
+  z-index: 3 !important;
+  mix-blend-mode: multiply !important;
+  background: #b59b698f !important;
+  width: 3rem !important;
+  height: 1.05rem !important;
+  position: absolute !important;
+  top: -0.65rem !important;
+  left: 50% !important;
+  transform: translate(-50%) rotate(-5deg) !important;
+}
+
+/* Upper Frame: fills the empty space below intro text, left of the tools list */
+.about-upper-photo-wrap {
+  margin-top: clamp(1rem, 2.2vh, 1.8rem);
+  margin-bottom: clamp(1.5rem, 3.5vh, 2.8rem);
+  display: flex;
+  justify-content: flex-start;
+  padding-left: clamp(0.5rem, 1.2vw, 1.5rem);
+}
+
+.about-upper-photo-wrap .story-frame {
+  width: clamp(13rem, 15.5vw, 16.5rem) !important;
+  --frame-rotation: -2.5deg !important;
+}
+
+/* Lower Photo Story: 2 Medium Square Frames */
+.photo-story {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
+  gap: clamp(1.5rem, 3.5vw, 4rem) !important;
+  padding: clamp(1rem, 2vh, 2rem) clamp(1.5rem, 4vw, 5rem) clamp(2.5rem, 4.5vh, 4.5rem) !important;
+  height: auto !important;
+  width: 100% !important;
+}
+
+.photo-story .story-frame {
+  width: clamp(13rem, 15.5vw, 16.5rem) !important;
+  flex-shrink: 0;
+}
+
+.frame-hat {
+  --frame-rotation: 2deg !important;
+}
+
+.frame-park {
+  --frame-rotation: -2deg !important;
+}
+
+@media (max-width: 48rem) {
+  .photo-story {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
+  }
+  .about-upper-photo-wrap {
+    justify-content: center !important;
+    padding-left: 0 !important;
+  }
 }
 
 /* ----------------------------------------------------------
