@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Ahammed Sameer mark">
+  <rect width="256" height="256" rx="56" fill="#080a09"/>
+  <path d="M96 128c17.673 0 32 14.327 32 32v64H96c-35.346 0-64-28.654-64-64v-32h64Zm128 96h-80v-64c0-17.673 14.327-32 32-32h48v96ZM128 96c0 17.673-14.327 32-32 32H32V96c0-35.346 28.654-64 64-64h32V96Z" fill="#efede7"/>
+  <path d="M176 32c26.51 0 48 21.49 48 48v48h-48c-17.673 0-32-14.327-32-32V32h32Z" fill="#315ed4"/>
+  <circle cx="128" cy="128" r="7" fill="#db4b35"/>
+</svg>

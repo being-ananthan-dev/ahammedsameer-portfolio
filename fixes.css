@@ -1,0 +1,260 @@
+/* =========================================================
+   LAYOUT FIXES — www.ahammedsameer.com
+   Fixes: alignment · padding · width across all sections
+   ========================================================= */
+
+/* ----------------------------------------------------------
+   1. HERO / STAGE SECTION
+      Fix: sampler/keyboard touching viewport edges, 
+           thin side padding, cutouts overflowing on 1366px
+   ---------------------------------------------------------- */
+
+.guitar  { left: 2%;  }
+.keyboard{ right: 2%; }
+.headphones { left: 1%; }
+.sampler { right: 1%; }
+.watch   { left: 35%; bottom: 1%; }
+
+/* Hero headline — ensure it never overflows its column */
+.hero-copy {
+  width: min(26rem, 35vw);
+}
+
+/* ----------------------------------------------------------
+   2. ABOUT SECTION
+      Fix: Skills/Experience text cut off by photo-story,
+           about-facts grid overflow on desktop
+   ---------------------------------------------------------- */
+
+/* Allow the about-page to grow with its content
+   instead of being locked to 100svh which caused clipping */
+.about-page {
+  height: auto;
+  min-height: 100svh;
+}
+
+/* Give about-spread room to breathe vertically */
+.about-spread {
+  height: auto;
+  overflow: visible;
+}
+
+/* Give the copy column proper overflow instead of clipping */
+.about-copy {
+  overflow: visible;
+}
+
+/* Facts area: add a bottom buffer so skills list 
+   doesn't visually collide with the photos below */
+.about-facts {
+  padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+/* Skill list: compact 2-column grid */
+.skill-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.3rem;
+  column-gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Compact skill items */
+.skill-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+/* Skill text: prevent overflow */
+.skill-list li > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.78rem;
+}
+
+/* Skill icon size */
+.skill-mark svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* Category label paragraphs above each skill group */
+.fact-block.skills > p {
+  margin-top: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Hide duplicate old skill items that render from React JSON hydration */
+.fact-block.skills > ul + li,
+.fact-block.skills li[style*="--skill-color: #000000"],
+.fact-block.skills li[style*="--skill-color: #4479a1"],
+.fact-block.skills li[style*="--skill-color: #f7df1e"],
+.fact-block.skills li[style*="--skill-color: #e34f26"] {
+  display: none;
+}
+
+
+
+/* Experience list: prevent last item clipping */
+.experience-list {
+  padding-bottom: 0.25rem;
+}
+
+/* Photo story: give it a clear top separation */
+.photo-story {
+  padding-top: clamp(2rem, 4vh, 3.5rem);
+  padding-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+/* Story frames: ensure they have consistent height */
+.story-frame {
+  min-height: 0;
+}
+
+/* ----------------------------------------------------------
+   3. SKILLS IN ORBIT SECTION
+      Fix: "ahammed sameer" fixed header leaking in,
+           excessive empty canvas padding top/bottom
+   ---------------------------------------------------------- */
+
+/* Tighten the vertical padding so orbit canvas
+   doesn't leave giant empty zones */
+.skills-orbit-page {
+  padding-top: clamp(2rem, 4vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 4rem);
+}
+
+/* Signal bar alignment: even column widths */
+.orbit-signal-bar {
+  align-items: center;
+}
+
+/* Orbit stage: constrain max height to avoid over-tall blank zones */
+.orbit-stage {
+  min-height: clamp(28rem, 55svh, 42rem);
+  max-height: 52svh;
+}
+
+/* ----------------------------------------------------------
+   4. "CURIOUS BY NATURE" SECTION
+      Fix: Excessive top/bottom padding (200px each),
+           left-aligned text needs better vertical centering
+   ---------------------------------------------------------- */
+
+.work-page {
+  min-height: max(38rem, 100svh);
+}
+
+/* Tighten work copy vertical centering */
+.work-copy {
+  transform: translateY(-50%);
+  left: var(--page-gutter);
+}
+
+/* ----------------------------------------------------------
+   5. PROJECTS SECTION
+      Fix: project header intro spacing,
+           project-feature grid column gap too wide,
+           contact-sheet last card border symmetry
+   ---------------------------------------------------------- */
+
+/* Intro heading: reduce excessive top padding */
+.projects-intro {
+  padding-top: clamp(5rem, 9vw, 9rem);
+  column-gap: clamp(1.5rem, 5vw, 6rem);
+}
+
+/* Project feature: tighten gap between projector and record */
+.project-feature {
+  gap: clamp(1.5rem, 3.5vw, 4.5rem);
+  padding-top: clamp(3rem, 6vw, 6rem);
+  padding-bottom: clamp(2rem, 5vw, 5rem);
+}
+
+/* Project index tabs: fix horizontal scroll edge padding */
+.project-index {
+  margin-left: calc(var(--page-gutter) * -1);
+  margin-right: calc(var(--page-gutter) * -1);
+}
+
+/* Contact sheet: add right border to last item for symmetry */
+.project-contact-sheet button:last-child {
+  border-right: 0.0625rem solid #10121120;
+}
+
+/* Project record: ensure description paragraph doesn't overflow */
+.project-record > p {
+  max-width: 30rem;
+}
+
+/* Projects footer: consistent top padding */
+.projects-footer {
+  padding-top: clamp(2rem, 5vw, 5rem);
+}
+
+/* ----------------------------------------------------------
+   6. FOOTER / CONTACT SECTION
+      Fix: Giant line-height gap before 3-column principles,
+           email touching borders in PROJECT INTAKE card,
+           social links last border missing
+   ---------------------------------------------------------- */
+
+/* Footer headline: reduce line-height gap */
+.projects-footer > p {
+  line-height: 0.76;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Social links: add border to the last column item */
+.ascii-footer-socials > *:last-child,
+.footer-socials > *:last-child,
+[class*="social"] > *:last-child {
+  border-right: 0.0625rem solid #f4f0e71f;
+}
+
+/* ----------------------------------------------------------
+   7. GLOBAL / SCROLL PROGRESS
+      Fix: scroll progress bar stays in right position
+   ---------------------------------------------------------- */
+
+.scroll-progress {
+  right: clamp(0.6rem, 1.4vw, 1.35rem);
+}
+
+/* ----------------------------------------------------------
+   8. RESPONSIVE CORRECTIONS — 1366px viewport (primary target)
+   ---------------------------------------------------------- */
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+
+  /* About: ensure facts columns don't overflow */
+  .about-facts {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(0.75rem, 1.2vw, 1.5rem);
+  }
+
+  /* Skills list: tighter font to prevent 2-col overflow */
+  .skill-list li {
+    font-size: clamp(0.82rem, 0.78vw, 0.96rem);
+  }
+
+  /* Orbit: ensure left heading doesn't overflow */
+  .orbit-page-heading h2 {
+    font-size: clamp(3.2rem, 4.8vw, 5.5rem);
+  }
+
+  /* Projects intro: prevent h2 overflow */
+  .projects-intro h2 {
+    font-size: clamp(4.8rem, 9.8vw, 10rem);
+  }
+
+  /* Project record heading */
+  .project-record h3 {
+    font-size: clamp(2.6rem, 4.2vw, 5rem);
+  }
+}
