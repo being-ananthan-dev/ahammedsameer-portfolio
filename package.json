@@ -1,0 +1,17 @@
+{
+  "name": "ahammedsameer-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ahammed Sameer — Portfolio Website",
+  "scripts": {
+    "build": "echo 'Static assets ready for deployment'"
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "developer",
+    "automation"
+  ],
+  "author": "Ahammed Sameer",
+  "license": "MIT"
+}
