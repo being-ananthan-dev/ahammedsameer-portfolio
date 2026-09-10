@@ -64,40 +64,40 @@
   transform: translateY(2px);
 }
 
-/* Global Floating Action: RESUME BUTTON (Always visible at top-right on all pages) */
+/* Global Floating Action: RESUME BUTTON (Enlarged for maximum visibility & touch comfort) */
 .floating-resume-btn {
   position: fixed;
-  top: clamp(0.75rem, 1.4vw, 1.25rem);
-  right: clamp(1rem, 2vw, 2.25rem);
+  top: clamp(0.85rem, 1.5vw, 1.35rem);
+  right: clamp(1rem, 2vw, 2.5rem);
   z-index: 1000;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.7rem;
   background: #ffffff !important;
   color: #101211 !important;
-  border: 1px solid rgba(16, 18, 17, 0.22) !important;
+  border: 1.5px solid rgba(16, 18, 17, 0.28) !important;
   border-radius: 999px;
-  padding: 0.55rem 0.95rem;
-  font: 700 0.58rem/1 var(--mono, monospace);
-  letter-spacing: 0.1em;
+  padding: clamp(0.7rem, 0.9vw, 0.92rem) clamp(1.25rem, 1.6vw, 1.85rem);
+  font: 800 clamp(0.72rem, 0.82vw, 0.92rem)/1 var(--mono, monospace);
+  letter-spacing: 0.12em;
   text-decoration: none;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.18), 0 0.05rem 0.2rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.35rem 1.3rem rgba(0, 0, 0, 0.22), 0 0.1rem 0.35rem rgba(0, 0, 0, 0.1);
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
 .floating-resume-btn b {
   color: var(--red, #e54d2e);
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 1;
   font-weight: 900;
   transition: transform 0.2s ease;
 }
 
 .floating-resume-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
   background: #ffffff !important;
-  box-shadow: 0 0.45rem 1.4rem rgba(0, 0, 0, 0.28);
+  box-shadow: 0 0.55rem 1.6rem rgba(0, 0, 0, 0.28);
 }
 
 .floating-resume-btn:hover b {
@@ -278,6 +278,18 @@
   display: block !important;
   filter: saturate(0.92) contrast(1.04);
   transition: filter 0.55s ease, transform 0.7s var(--ease-premium, ease);
+}
+
+.frame-child img {
+  object-position: center 25% !important;
+}
+
+.frame-hat img {
+  object-position: center 25% !important;
+}
+
+.frame-park img {
+  object-position: center 48% !important;
 }
 
 /* Figcaption with handwritten note */
